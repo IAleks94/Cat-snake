@@ -35,9 +35,15 @@ const generateSnake = () => {
 let snakeCordinate = generateSnake();
 
 let snakeBody = [
-  document.querySelector(`[posX = '${snakeCordinate[0]}'][posY = '${snakeCordinate[1]}']`),
-  document.querySelector(`[posX = '${snakeCordinate[0] - 1}'][posY = '${snakeCordinate[1]}']`),
-  document.querySelector(`[posX = '${snakeCordinate[0] - 2}'][posY = '${snakeCordinate[1]}']`)
+  document.querySelector(
+    `[posX = '${snakeCordinate[0]}'][posY = '${snakeCordinate[1]}']`
+  ),
+  document.querySelector(
+    `[posX = '${snakeCordinate[0] - 1}'][posY = '${snakeCordinate[1]}']`
+  ),
+  document.querySelector(
+    `[posX = '${snakeCordinate[0] - 2}'][posY = '${snakeCordinate[1]}']`
+  )
 ];
 
 snakeBody[0].classList.add("head");
@@ -95,7 +101,10 @@ const valueCounter = value => {
 createCounter(score);
 
 const move = () => {
-  let snakeCordinates = [snakeBody[0].getAttribute("posX"), snakeBody[0].getAttribute("posY")];
+  let snakeCordinates = [
+    snakeBody[0].getAttribute("posX"),
+    snakeBody[0].getAttribute("posY")
+  ];
 
   snakeBody[0].classList.remove("head");
   snakeBody[snakeBody.length - 1].classList.remove("snakeBody");
@@ -173,33 +182,32 @@ let getMowe = () => {
 //Функция конца игры
 const endGame = () => {
   clearInterval(interval);
-  snakeBody[0].style.background = "url(endGame.jpg) center no-repeat";
+  snakeBody[0].style.background = "url(img/endGame.jpg) center no-repeat";
   snakeBody[0].style.backgroundSize = "cover";
-  
 
   setTimeout(() => {
-    document.querySelector('.field').style.display= 'none';
-    document.querySelector('.score').style.display= 'none';
+    document.querySelector(".field").style.display = "none";
+    document.querySelector(".score").style.display = "none";
     endGameMassage();
   }, 200);
 };
 
-//создаем сообщение конца игры 
+//создаем сообщение конца игры
 let endBlock;
 const endGameMassage = () => {
-    endBlock = document.createElement("div");
-    endBlock.classList.add("end-block");
-    let endMassage = document.createElement("p");
-    endMassage.classList.add("end-massage");
-    endMassage.textContent = `GG. ${playerName}, ты набрал ${score} очков`;
-    endBlock.append(endMassage);
-    let repeatBtm = document.createElement("button");
-    repeatBtm.classList.add("repeat-button");
-    repeatBtm.type = 'submit';
-    repeatBtm.textContent = 'Еще раз';
-    endBlock.addEventListener("click", submitCheck);
-    endBlock.append(repeatBtm);
-    document.body.append(endBlock);
+  endBlock = document.createElement("div");
+  endBlock.classList.add("end-block");
+  let endMassage = document.createElement("p");
+  endMassage.classList.add("end-massage");
+  endMassage.textContent = `GG. ${playerName}, ты набрал ${score} очков`;
+  endBlock.append(endMassage);
+  let repeatBtm = document.createElement("button");
+  repeatBtm.classList.add("repeat-button");
+  repeatBtm.type = "submit";
+  repeatBtm.textContent = "Еще раз";
+  endBlock.addEventListener("click", submitCheck);
+  endBlock.append(repeatBtm);
+  document.body.append(endBlock);
 };
 
 //Функция поедания мыши
@@ -214,16 +222,28 @@ const eatMouse = () => {
 
 window.addEventListener("keydown", evt => {
   if (steps) {
-    if ((evt.code === "ArrowLeft" || evt.code === "KeyA") && direction !== "right") {
+    if (
+      (evt.code === "ArrowLeft" || evt.code === "KeyA") &&
+      direction !== "right"
+    ) {
       direction = "left";
       steps = false;
-    } else if ((evt.code === "ArrowRight" || evt.code === "KeyD") && direction !== "left") {
+    } else if (
+      (evt.code === "ArrowRight" || evt.code === "KeyD") &&
+      direction !== "left"
+    ) {
       direction = "right";
       steps = false;
-    } else if ((evt.code === "ArrowUp" || evt.code === "KeyW") && direction !== "down") {
+    } else if (
+      (evt.code === "ArrowUp" || evt.code === "KeyW") &&
+      direction !== "down"
+    ) {
       direction = "up";
       steps = false;
-    } else if ((evt.code === "ArrowDown" || evt.code === "KeyS") && direction !== "up") {
+    } else if (
+      (evt.code === "ArrowDown" || evt.code === "KeyS") &&
+      direction !== "up"
+    ) {
       direction = "down";
       steps = false;
     }
@@ -231,23 +251,23 @@ window.addEventListener("keydown", evt => {
 });
 
 let submitCheck = evt => {
-    event.preventDefault();
+  event.preventDefault();
   let target = evt.target;
-  console.log('target: ', target);
+  console.log("target: ", target);
 
-    if (target.classList.contains("form-name")) {
+  if (target.classList.contains("form-name")) {
     getMowe();
     playerName = formName.getElementsByClassName("input-name")[0].value;
-    document.querySelector('.field').style.display = 'flex';
-    document.querySelector('.score').style.display= 'block';
+    document.querySelector(".field").style.display = "flex";
+    document.querySelector(".score").style.display = "block";
     formName.hidden = true;
   } else if (target.classList.contains("repeat-button")) {
-    location.reload()
+    location.reload();
   }
 };
 
 let formName = document.querySelector(".form-name");
 let playerName;
-document.querySelector('.field').style.display= 'none';
-document.querySelector('.score').style.display= 'none';
+document.querySelector(".field").style.display = "none";
+document.querySelector(".score").style.display = "none";
 document.addEventListener("submit", submitCheck);
