@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 100px;
+  background-color: rgb(97, 107, 50);
+}
+
+.field {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #56b942;
+}
+
+.excel {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+}
+
+.snakeBody {
+  background: url(body.jpg);
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.head {
+  background: url(headCat.jpg);
+  background-size: cover;
+  border-radius: 10%;
+}
+
+.mouse {
+  background: url(mouse.jpg);
+  background-size: cover;
+}
+
+.form-name, .end-block {
+  position: relative;
+  max-width: 250px;
+  background-color: rgb(88, 115, 150);
+  border: solid 2px black;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
+.end-block  {
+    text-align: center;
+}
+
+.button-start, .repeat-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
