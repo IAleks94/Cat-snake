@@ -253,8 +253,7 @@ window.addEventListener("keydown", evt => {
 let submitCheck = evt => {
   event.preventDefault();
   let target = evt.target;
-  console.log("target: ", target);
-
+  
   if (target.classList.contains("form-name")) {
     getMowe();
     playerName = formName.getElementsByClassName("input-name")[0].value;
