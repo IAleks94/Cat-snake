@@ -261,7 +261,7 @@ let submitCheck = evt => {
     document.querySelector(".score").style.display = "block";
     formName.hidden = true;
   } else if (target.classList.contains("repeat-button")) {
-    location.reload();
+    window.location.reload();
   }
 };
 
